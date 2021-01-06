@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node ./frontend/serve.js",
     "server": "nodemon server/src/index.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
