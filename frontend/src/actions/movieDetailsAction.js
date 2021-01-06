@@ -5,7 +5,7 @@ export const getMovieDetails = (id) => async (dispatch) => {
     type: "LOADING_MOVIE_DETAILS",
   });
 
-  const detailData = await axios.get(`http://localhost:4000/movies/${id}`);
+  const detailData = await axios.get(`/movies/${id}`);
 
   dispatch({
     type: "GET_MOVIE_DETAILS",

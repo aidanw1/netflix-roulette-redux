@@ -2,13 +2,7 @@ import axios from "axios";
 
 export const loadMovies = () => async (dispatch) => {
   //FETCH AXIOS
-  const allMoviesData = await axios.get(
-    "http://localhost:4000/movies?limit=12"
-  );
-  // const deleteMovieData = await axios.delete(
-  //   `http://localhost:4000/movies/${id}`
-  // );
-  // console.log(allMoviesData.data.data);
+  const allMoviesData = await axios.get("/movies?limit=12");
 
   dispatch({
     type: "FETCH_MOVIES",
@@ -27,7 +21,7 @@ export const loadMovies = () => async (dispatch) => {
 
 export const fetchSearch = (movie_name) => async (dispatch) => {
   const searchMovieData = await axios.get(
-    `http://localhost:4000/movies?search=${movie_name}&searchBy=title`
+    `/movies?search=${movie_name}&searchBy=title`
   );
 
   // console.log(searchMovieData.data);
@@ -42,7 +36,7 @@ export const fetchSearch = (movie_name) => async (dispatch) => {
 
 export const fetchSorted = (movie_genre) => async (dispatch) => {
   const sortedMoviesData = await axios.get(
-    `http://localhost:4000/movies?limit=12&searchBy=genres&filter=${movie_genre}`
+    `/movies?limit=12&searchBy=genres&filter=${movie_genre}`
   );
 
   // console.log(sortedMoviesData);

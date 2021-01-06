@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const addMovies = (movie) => async (dispatch) => {
-  const moviesData = await axios.post(`http://localhost:4000/movies`);
+  const moviesData = await axios.post(`/movies`);
 
   dispatch({
     type: "ADD_MOVIE",
