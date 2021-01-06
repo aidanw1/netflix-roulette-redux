@@ -2,7 +2,7 @@
   "name": "react-with-webpack",
   "version": "1.0.0",
   "description": "",
-  "proxy": "http://127.0.0.1:4000",
+  "proxy": "http://127.0.0.1:3000",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
