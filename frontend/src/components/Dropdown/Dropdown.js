@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortByTitle } from "../../actions/moviesAction";
+import {
+  sortByTitle,
+  sortByRuntime,
+  sortByRating,
+  sortByReleaseDate,
+} from "../../actions/moviesAction";
 import {
   ReleaseDateContainer,
   DownIcon,
@@ -60,10 +65,7 @@ function Dropdown({ title, items, multiSelect = false }) {
             onClick={() => {
               setSortTitle("Release Date");
               setIsActive(false);
-              searchedMovies.sort(function (a, b) {
-                //if b is larger than a returns negative number - which means a should come before it
-                return b.release_date - a.release_date;
-              });
+              dispatch(sortByReleaseDate(searchedMovies));
             }}
           >
             <a href="#">Release Date</a>
@@ -72,11 +74,7 @@ function Dropdown({ title, items, multiSelect = false }) {
             onClick={() => {
               setSortTitle("Rating");
               setIsActive(false);
-
-              const sortedRating = searchedMovies.sort(function (a, b) {
-                //if b is larger than a returns negative number - which means a should come before it
-                return b.vote_average - a.vote_average;
-              });
+              dispatch(sortByRating(searchedMovies));
             }}
           >
             <a href="#">Rating</a>
@@ -85,10 +83,7 @@ function Dropdown({ title, items, multiSelect = false }) {
             onClick={() => {
               setSortTitle("Run Time");
               setIsActive(false);
-              searchedMovies.sort(function (a, b) {
-                //if b is larger than a returns negative number - which means a should come before it
-                return b.runtime - a.runtime;
-              });
+              dispatch(sortByRuntime(searchedMovies));
             }}
           >
             <a href="#">Run Time</a>

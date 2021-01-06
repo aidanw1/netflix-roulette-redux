@@ -27,6 +27,7 @@ const SearchBanner = ({
         <SearchTitle>FIND YOUR MOVIE</SearchTitle>
         <Search />
       </SearchContent>
+
       <Modal open={movieModal} onClose={() => setMovieModal(false)}>
         <MovieModal modalTitle={modalTitle} />
       </Modal>

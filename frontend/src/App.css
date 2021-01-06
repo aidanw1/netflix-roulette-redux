@@ -68,3 +68,7 @@ body {
   padding: 15px 20px;
   display: block;
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}

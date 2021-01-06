@@ -6,11 +6,11 @@ const initState = {
 
 const moviesReducer = (state = initState, action) => {
   switch (action.type) {
-    case "FETCH_MOVIES":
-      return {
-        ...state,
-        allMovies: action.payload.allMovies,
-      };
+    // case "FETCH_MOVIES":
+    //   return {
+    //     ...state,
+    //     allMovies: action.payload.allMovies,
+    //   };
     case "FETCH_SEARCHED_MOVIES":
       return {
         ...state,
@@ -33,16 +33,36 @@ const moviesReducer = (state = initState, action) => {
           (item) => item.id !== action.payload.id
         ),
       };
+    case "ADD_MOVIE":
+      return {
+        ...state,
+      };
     // case "OPEN_DELETE_MODAL":
     //   return {
     //     ...state,
 
     //   }
+    case "SORT_BY_RATING":
+      return {
+        ...state,
+        searchedMovies: action.payload.sortedMovies,
+      };
+    case "SORT_BY_RUNTIME":
+      return {
+        ...state,
+        searchedMovies: action.payload.sortedMovies,
+      };
     case "SORT_BY_TITLE":
       return {
         ...state,
         searchedMovies: action.payload.sortedMovies,
       };
+    case "SORT_BY_RELEASE_DATE":
+      return {
+        ...state,
+        searchedMovies: action.payload.sortedMovies,
+      };
+
     default:
       return { ...state };
   }

@@ -8,6 +8,7 @@ export const MovieDetailsContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100rem;
+  margin: auto;
 `;
 
 export const MovieDetailsTitleContainer = styled.div`

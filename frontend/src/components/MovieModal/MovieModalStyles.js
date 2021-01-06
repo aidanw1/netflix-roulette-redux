@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Button } from "../../styles/button-styles";
 import { darkRed, greyBackground, blackBackground } from "../../styles/colors";
+import { Field, Form, ErrorMessage } from "formik";
+import DatePicker from "react-datepicker";
 
-export const ModalContainer = styled.form`
+export const ModalContainer = styled(Form)`
   margin: 0 3rem;
   padding-top: 20px;
   position: "relative";
@@ -22,10 +24,10 @@ export const ModalTitle = styled.h2`
   padding: 2rem 0 1rem 0;
 `;
 
-export const ModalInput = styled.input`
+export const ModalInput = styled(Field)`
   color: white;
   width: 100%;
-  padding: 1rem 0;
+  padding: 2rem 0;
   background-color: ${greyBackground};
   outline: none;
   border-radius: 5px;
@@ -33,6 +35,12 @@ export const ModalInput = styled.input`
   box-shadow: none;
   height: 27px;
   font-size: 2rem;
+`;
+
+export const ErrorText = styled(ErrorMessage)`
+  color: red;
+  font-size: 1.6rem;
+  font-weight: bold;
 `;
 
 export const SubmitButton = styled(Button)`
@@ -50,4 +58,17 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 2rem 0 1rem 0;
+`;
+
+export const DateContainer = styled(DatePicker)`
+  min-width: 100%;
+  color: white;
+  width: 100%;
+  padding: 2rem 0;
+  background-color: ${greyBackground};
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+  height: 27px;
 `;

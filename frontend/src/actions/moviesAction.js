@@ -72,3 +72,46 @@ export const sortByTitle = (movies) => async (dispatch) => {
     },
   });
 };
+
+export const sortByRuntime = (movies) => async (dispatch) => {
+  const sortedMoviesData = movies.sort(function (a, b) {
+    //if b is larger than a returns negative number - which means a should come before it
+    return b.runtime - a.runtime;
+  });
+
+  dispatch({
+    type: "SORT_BY_TITLE",
+    payload: {
+      sortedMovies: sortedMoviesData,
+    },
+  });
+};
+
+export const sortByRating = (movies) => async (dispatch) => {
+  const sortedMoviesData = movies.sort(function (a, b) {
+    //if b is larger than a returns negative number - which means a should come before it
+    return b.vote_average - a.vote_average;
+  });
+
+  dispatch({
+    type: "SORT_BY_RATING",
+    payload: {
+      sortedMovies: sortedMoviesData,
+    },
+  });
+};
+
+export const sortByReleaseDate = (movies) => async (dispatch) => {
+  const sortedMoviesData = movies.sort(function (a, b) {
+    var dateA = new Date(a.release_date),
+      dateB = new Date(b.release_date);
+    return dateB - dateA;
+  });
+
+  dispatch({
+    type: "SORT_BY_RELEASE_DATE",
+    payload: {
+      sortedMovies: sortedMoviesData,
+    },
+  });
+};
