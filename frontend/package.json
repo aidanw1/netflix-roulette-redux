@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "serve": "node serve.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-plugin": "^4.5.1",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
@@ -31,6 +32,7 @@
     "@babel/runtime": "^7.12.5",
     "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.12.0",
+    "express": "^4.17.1",
     "formik": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

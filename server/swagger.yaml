@@ -75,7 +75,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MovieBase'
+              $ref: "#/components/schemas/MovieBase"
       responses:
         "201":
           description: Movie object
@@ -102,7 +102,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Movie'
+              $ref: "#/components/schemas/Movie"
       responses:
         "200":
           description: Movie object
@@ -142,7 +142,7 @@ paths:
                 $ref: "#/components/schemas/Movie"
         "404":
           description: Movie not found
-  
+
     delete:
       description: Remove movie by id
       summary: Remove movie by id
@@ -161,7 +161,7 @@ paths:
           description: No response
         "404":
           description: Movie not found
-      
+
 servers:
   - url: http://localhost:4000/
 components:
@@ -210,7 +210,7 @@ components:
         release_date:
           type: string
           description: Movie release date
-          example: '2016-12-29'
+          example: "2016-12-29"
         poster_path:
           type: string
           description: Url to the poster image
@@ -242,12 +242,12 @@ components:
           description: List of genres
           items:
             type: string
-          example: [ 'Comedy', 'Drama', 'Romance' ]
+          example: ["Comedy", "Drama", "Romance"]
 
     Movie:
       title: Movie
       allOf:
-        - $ref: '#/components/schemas/MovieBase'
+        - $ref: "#/components/schemas/MovieBase"
         - type: object
           required:
             - id
@@ -266,6 +266,4 @@ components:
           description: List of error messages
           items:
             type: string
-          example: [ "\"runtime\" must be an integer" ]
-
-
+          example: ['"runtime" must be an integer']
