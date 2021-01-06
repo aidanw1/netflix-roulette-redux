@@ -1,5 +1,6 @@
 const Koa = require("koa");
 const bodyParser = require("koa-bodyparser");
+// const cors = require("kcors");
 const cors = require("kcors");
 const koaSwagger = require("koa2-swagger-ui");
 
