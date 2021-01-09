@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./frontend/serve.js",
+    "heroku-prebuild": "webpack --mode production --config frontend/webpack.config.js",
     "server": "nodemon server/src/index.js",
     "serve": "node server/src/index.js",
     "client": "npm start --prefix frontend",
