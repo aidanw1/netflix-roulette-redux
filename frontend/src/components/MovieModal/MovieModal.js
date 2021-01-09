@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addMovies } from "../../actions/addMoviesAction";
 import { Link } from "react-router-dom";
 import DateView from "react-datepicker";
-import DatePicker from "./DatePicker";
-import "./customDatePickerWidth.css";
-import "react-datepicker/dist/react-datepicker.css";
+
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -17,10 +16,18 @@ import {
   ResetButton,
   SubmitButton,
   ErrorText,
+  DropDown,
+  DateSelector,
+  SelectorContainer,
+  IconBox,
+  ArrowBox,
 } from "./MovieModalStyles";
 
 function MovieModal({ modalTitle }) {
-  const [submittedValues, setSubmittedValues] = useState([]);
+  // const [submittedValues, setSubmittedValues] = useState([]);
+  const { searchedMovies } = useSelector((state) => state.movies);
+
+  const dispatch = useDispatch();
 
   const initialValues = {
     title: "",
@@ -43,11 +50,25 @@ function MovieModal({ modalTitle }) {
   const onSubmit = (values, onSubmitProps) => {
     console.log("Form data", values);
     console.log("Submit props", onSubmitProps);
+    dispatch(addMovies(values));
     onSubmitProps.setSubmitting(false); //wait for api response then call this
     onSubmitProps.resetForm();
-    setSubmittedValues(values);
-    console.log(submittedValues);
+    // setSubmittedValues(values);
+    // console.log(submittedValues);
   };
+
+  const onReset = (values, onSubmitProps) => {
+    onSubmitProps.resetForm();
+  };
+
+  const dropdownOptions = [
+    { key: "Select Genre", value: "" },
+    { key: "Drama", value: "drama" },
+    { key: "Adventure", value: "adventure" },
+    { key: "Action", value: "action" },
+    { key: "Family", value: "family" },
+    { key: "Fantasy", value: "fantasy" },
+  ];
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -61,7 +82,14 @@ function MovieModal({ modalTitle }) {
             <ErrorText name="title" component="div" />
             {/* Release Date */}
             <ModalTitle>Release Date</ModalTitle>
-            {/* <DatePicker name="date" /> */}
+            <SelectorContainer>
+              <DateSelector
+                control="date"
+                name="date"
+                placeholderText="Select Date"
+              />
+              <IconBox size={20} />
+            </SelectorContainer>
 
             <ErrorText name="date" component="div" />
             {/* Movie URL */}
@@ -70,7 +98,15 @@ function MovieModal({ modalTitle }) {
             <ErrorText name="imageUrl" component="div" />
             {/* Genre */}
             <ModalTitle>Genre</ModalTitle>
-            <ModalInput name="genre" type="text" />
+            <SelectorContainer>
+              <DropDown
+                control="select"
+                name="genre"
+                options={dropdownOptions}
+              />
+              <ArrowBox size={20} />
+            </SelectorContainer>
+
             <ErrorText name="genre" component="div" />
             {/* Overview */}
             <ModalTitle>Overview</ModalTitle>
@@ -82,7 +118,7 @@ function MovieModal({ modalTitle }) {
             <ErrorText name="runtime" component="div" />
             {/* Runtime */}
             <ButtonContainer>
-              <ResetButton>RESET</ResetButton>
+              <ResetButton onClick={onReset}>RESET</ResetButton>
               <SubmitButton type="submit" primary>
                 SUBMIT
               </SubmitButton>

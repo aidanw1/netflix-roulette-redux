@@ -4,7 +4,7 @@ import Search from "../../Search/Search";
 import AddMovie from "../../AddMovie/AddMovie";
 import Modal from "../../Modal/Modal";
 import MovieModal from "../../MovieModal/MovieModal";
-
+import Loader from "../../Loader/Loader";
 import {
   SearchTitle,
   SearchBannerContainer,

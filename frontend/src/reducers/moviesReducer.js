@@ -36,6 +36,7 @@ const moviesReducer = (state = initState, action) => {
     case "ADD_MOVIE":
       return {
         ...state,
+        searchedMovies: action.payload.sortedMovies,
       };
     // case "OPEN_DELETE_MODAL":
     //   return {

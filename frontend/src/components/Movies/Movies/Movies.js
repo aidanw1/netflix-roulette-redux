@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovies } from "../../../actions/moviesAction";
 import Movie from "../Movie/Movie";
-
+import Loader from "../../Loader/Loader";
 import { MoviesGrid } from "./MoviesStyles";
 
 const Movies = ({
@@ -41,6 +41,7 @@ const Movies = ({
 
   return (
     <MoviesGrid>
+      {/* <Loader className="loader-container" /> */}
       {searchedMovies.length ? (
         <>
           {searchedMovies.map((movie) => (

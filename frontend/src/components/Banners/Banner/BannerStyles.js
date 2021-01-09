@@ -2,7 +2,7 @@ import styled from "styled-components";
 import movieBackground from "../../../images/movie-banner.jpg";
 
 export const BannerContainer = styled.div`
-  height: 50vh;
+  height: 40vh;
   background: url(${movieBackground}) no-repeat center center fixed;
   background-size: cover;
   /* background-size: 100% 100%; */
