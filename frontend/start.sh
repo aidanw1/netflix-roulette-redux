@@ -1,2 +1,2 @@
 #!/bin/sh
-cd frontend && rm -r sf dist/ && ./node_modules/.bin/webpack --mode production
+cd frontend && rm -rf dist/ && ./node_modules/.bin/webpack --mode production
