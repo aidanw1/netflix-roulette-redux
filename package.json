@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./frontend/serve.js",
-    "heroku-prebuild": "webpack --mode production --config frontend/webpack.config.js",
+    "heroku-prebuild": "sh frontend/start.sh",
     "server": "nodemon server/src/index.js",
     "serve": "node server/src/index.js",
     "client": "npm start --prefix frontend",
@@ -25,7 +25,9 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^25.1.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",

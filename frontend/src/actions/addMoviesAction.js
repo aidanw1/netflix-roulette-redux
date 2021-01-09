@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosHelper";
 
 export const addMovies = (movie) => async (dispatch) => {
   const moviesData = await axios.post(`/movies/${movie}`);
