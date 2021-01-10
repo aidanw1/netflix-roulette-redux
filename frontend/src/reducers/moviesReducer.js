@@ -2,6 +2,7 @@ const initState = {
   allMovies: [],
   searchedMovies: [],
   sortedMovies: [],
+  loading: false,
 };
 
 const moviesReducer = (state = initState, action) => {
@@ -11,6 +12,11 @@ const moviesReducer = (state = initState, action) => {
     //     ...state,
     //     allMovies: action.payload.allMovies,
     //   };
+    case "INIT_FETCH_MOVIES":
+      return {
+        ...state,
+        loading: true,
+      };
     case "FETCH_SEARCHED_MOVIES":
       return {
         ...state,
@@ -25,6 +31,7 @@ const moviesReducer = (state = initState, action) => {
       return {
         ...state,
         searchedMovies: action.payload.sortedMovies,
+        loading: false,
       };
     case "DELETE_MOVIE":
       return {
@@ -34,9 +41,23 @@ const moviesReducer = (state = initState, action) => {
         ),
       };
     case "ADD_MOVIE":
+      console.info("payload is", action.payload);
       return {
         ...state,
-        searchedMovies: action.payload.sortedMovies,
+        searchedMovies: [
+          ...[action.payload.addedMovies],
+          ...state.searchedMovies,
+        ],
+      };
+    case "SHOW_LOADER":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "HIDE_LOADER":
+      return {
+        ...state,
+        loading: false,
       };
     // case "OPEN_DELETE_MODAL":
     //   return {

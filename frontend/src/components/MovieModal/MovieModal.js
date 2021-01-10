@@ -31,18 +31,18 @@ function MovieModal({ modalTitle }) {
 
   const initialValues = {
     title: "",
-    date: "",
-    imageUrl: "",
-    genre: "",
+    release_date: "",
+    poster_path: "",
+    genres: "",
     overview: "",
     runtime: "",
   };
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
-    date: Yup.string().required("Release Date is required"),
-    imageUrl: Yup.string().required("Image Url required"),
-    genre: Yup.string().required("Genre required"),
+    release_date: Yup.string().required("Release Date is required"),
+    poster_path: Yup.string().required("Image Url required"),
+    genres: Yup.string().required("Genre required"),
     overview: Yup.string().required("Overview Description required"),
     runtime: Yup.number().required("Runtime required"),
   });
@@ -84,7 +84,7 @@ function MovieModal({ modalTitle }) {
             <ModalTitle>Release Date</ModalTitle>
             <SelectorContainer>
               <DateSelector
-                control="date"
+                control="release_date"
                 name="date"
                 placeholderText="Select Date"
               />
@@ -94,14 +94,14 @@ function MovieModal({ modalTitle }) {
             <ErrorText name="date" component="div" />
             {/* Movie URL */}
             <ModalTitle>Movie Url</ModalTitle>
-            <ModalInput name="imageUrl" type="text" />
-            <ErrorText name="imageUrl" component="div" />
+            <ModalInput name="poster_path" type="text" />
+            <ErrorText name="poster_path" component="div" />
             {/* Genre */}
             <ModalTitle>Genre</ModalTitle>
             <SelectorContainer>
               <DropDown
                 control="select"
-                name="genre"
+                name="genres"
                 options={dropdownOptions}
               />
               <ArrowBox size={20} />

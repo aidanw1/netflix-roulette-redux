@@ -20,6 +20,9 @@ export const loadMovies = () => async (dispatch) => {
 };
 
 export const fetchSearch = (movie_name) => async (dispatch) => {
+  dispatch({
+    type: "INIT_FETCH_MOVIES",
+  });
   const searchMovieData = await axios.get(
     `/movies?search=${movie_name}&searchBy=title`
   );
@@ -35,8 +38,11 @@ export const fetchSearch = (movie_name) => async (dispatch) => {
 };
 
 export const fetchSorted = (movie_genre) => async (dispatch) => {
+  dispatch({
+    type: "INIT_FETCH_MOVIES",
+  });
   const sortedMoviesData = await axios.get(
-    `/movies?limit=12&searchBy=genres&filter=${movie_genre}`
+    `/movies?limit=100&searchBy=genres&filter=${movie_genre}`
   );
 
   // console.log(sortedMoviesData);
@@ -107,5 +113,17 @@ export const sortByReleaseDate = (movies) => async (dispatch) => {
     payload: {
       sortedMovies: sortedMoviesData,
     },
+  });
+};
+
+export const showLoader = () => async (dispatch) => {
+  dispatch({
+    type: "SHOW_LOADER",
+  });
+};
+
+export const hideLoader = () => async (dispatch) => {
+  dispatch({
+    type: "HIDE_LOADER",
   });
 };

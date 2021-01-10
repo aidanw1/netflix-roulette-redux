@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadMovies } from "../../../actions/moviesAction";
+import {
+  loadMovies,
+  showLoader,
+  hideLoader,
+} from "../../../actions/moviesAction";
 import Movie from "../Movie/Movie";
 import Loader from "../../Loader/Loader";
 import { MoviesGrid } from "./MoviesStyles";
@@ -20,7 +24,7 @@ const Movies = ({
   //   setMovieDetailsId(id);
   // };
 
-  const { searchedMovies } = useSelector((state) => state.movies);
+  const { searchedMovies, loading } = useSelector((state) => state.movies);
 
   console.log(searchedMovies);
 
@@ -33,15 +37,23 @@ const Movies = ({
   // );
 
   const dispatch = useDispatch();
-
+  //show loader - loading true
   useEffect(() => {
     // console.log(searchedMovies);
-    dispatch(loadMovies());
+    // dispatch(loadMovies());
+    // dispatch(showLoader());
+    // if (searchedMovies.length < 1) {
+    //   dispatch(showLoader());
+    // } else {
+    //   dispatch(hideLoader());
+    // }
   }, [dispatch, searchedMovies]);
 
   return (
     <MoviesGrid>
-      {/* <Loader className="loader-container" /> */}
+      {loading && <Loader />}
+      {/* {searchedMovies.length < 0 && loading ? <Loader /> : null} */}
+      {/* {loading && searchedMovies.length < 1 ? null : <Loader />} */}
       {searchedMovies.length ? (
         <>
           {searchedMovies.map((movie) => (
@@ -59,24 +71,6 @@ const Movies = ({
           ))}
         </>
       ) : null}
-
-      {/* {allMovies.length && searchedMovies.length === 0 ? (
-        <>
-          {allMovies.map((movie) => (
-            <div key={movie.id}>
-              <Movie
-                handleMovieDelete={handleMovieDelete}
-                editMovieModal={editMovieModal}
-                setSwitchBanner={setSwitchBanner}
-                movie={movie}
-                deleteModal={deleteModal}
-                setDeleteModal={setDeleteModal}
-                closeModal={closeModal}
-              />
-            </div>
-          ))}
-        </>
-      ) : null} */}
     </MoviesGrid>
   );
 };

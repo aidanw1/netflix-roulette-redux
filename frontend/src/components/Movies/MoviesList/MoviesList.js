@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Movies from "../Movies/Movies";
 import FilterMovies from "../../FilterMovies/FilterMovies";
 import { MoviesListContainer, Container } from "./MoviesListStyles";
