@@ -3,13 +3,9 @@ import Loader from "react-loader-spinner";
 
 function LoaderSpinner() {
   return (
-    <Loader
-      type="Oval"
-      color="#f65261"
-      height={75}
-      width={75}
-      className="loader-container"
-    />
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Loader type="Oval" color="#f65261" height={75} width={75} />
+    </div>
   );
 }
 
