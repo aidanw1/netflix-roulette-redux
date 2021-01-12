@@ -43,7 +43,7 @@ function MovieModal({ modalTitle, action, movie }) {
     title: Yup.string().required("Title is required"),
     release_date: Yup.string().required("Release Date is required"),
     poster_path: Yup.string().required("Image Url required"),
-    genres: Yup.string().required("Genre required"),
+    // genres: Yup.string().required("Genre required"),
     overview: Yup.string().required("Overview Description required"),
     runtime: Yup.number().required("Runtime required"),
   });
@@ -112,7 +112,7 @@ function MovieModal({ modalTitle, action, movie }) {
               <ArrowBox size={20} />
             </SelectorContainer>
 
-            <ErrorText name="genres" component="div" />
+            {/* <ErrorText name="genres" component="div" /> */}
             {/* Overview */}
             <ModalTitle>Overview</ModalTitle>
             <ModalInput name="overview" type="text" />
