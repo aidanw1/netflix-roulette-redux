@@ -3,6 +3,7 @@ const initState = {
   searchedMovies: [],
   sortedMovies: [],
   loading: false,
+  movieDetailLoading: false,
 };
 
 const moviesReducer = (state = initState, action) => {
@@ -17,15 +18,23 @@ const moviesReducer = (state = initState, action) => {
         ...state,
         loading: true,
       };
+
+    case "INIT_MOVIE_DETAILS":
+      return {
+        ...state,
+        movieDetailLoading: true,
+      };
     case "FETCH_SEARCHED_MOVIES":
       return {
         ...state,
         searchedMovies: action.payload.searchedMovies,
+        loading: false,
       };
     case "CLEAR_SEARCHED":
       return {
         ...state,
         searchedMovies: [],
+        loading: false,
       };
     case "FETCH_SORTED_MOVIES":
       return {

@@ -73,12 +73,6 @@ body {
   width: 100%;
 }
 
-.loader-container svg {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 select {
   /* font-size: 16px;
 
@@ -131,4 +125,8 @@ select {
 .react-datepicker__navigation--next {
   border-left-color: #ccc;
   right: 1em;
+}
+
+.react-datepicker__time-list-item--disabled {
+  display: none;
 }

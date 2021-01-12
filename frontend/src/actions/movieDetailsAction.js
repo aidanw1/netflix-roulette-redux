@@ -2,9 +2,8 @@ import axios from "../axiosHelper";
 
 export const getMovieDetails = (id) => async (dispatch) => {
   dispatch({
-    type: "LOADING_MOVIE_DETAILS",
+    type: "INIT_MOVIE_DETAILS",
   });
-
   const detailData = await axios.get(`/movies/${id}`);
 
   dispatch({

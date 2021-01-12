@@ -71,7 +71,11 @@ function MovieModal({ modalTitle }) {
   ];
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
       {(formik) => {
         return (
           <ModalContainer>
@@ -85,13 +89,13 @@ function MovieModal({ modalTitle }) {
             <SelectorContainer>
               <DateSelector
                 control="release_date"
-                name="date"
+                name="release_date"
                 placeholderText="Select Date"
               />
               <IconBox size={20} />
             </SelectorContainer>
 
-            <ErrorText name="date" component="div" />
+            <ErrorText name="release_date" component="div" />
             {/* Movie URL */}
             <ModalTitle>Movie Url</ModalTitle>
             <ModalInput name="poster_path" type="text" />
@@ -107,7 +111,7 @@ function MovieModal({ modalTitle }) {
               <ArrowBox size={20} />
             </SelectorContainer>
 
-            <ErrorText name="genre" component="div" />
+            <ErrorText name="genres" component="div" />
             {/* Overview */}
             <ModalTitle>Overview</ModalTitle>
             <ModalInput name="overview" type="text" />

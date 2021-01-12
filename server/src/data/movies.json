@@ -1,19 +1,5 @@
 [
   {
-    "id": 590,
-    "title": "The Hours",
-    "tagline": "The time to hide is over. The time to regret is gone. The time to live is now.",
-    "vote_average": 7.2,
-    "vote_count": 594,
-    "release_date": "2002-12-27",
-    "poster_path": "https://image.tmdb.org/t/p/w500/vRTqBRCLGiZNITXfdhGZd3tZ7Qh.jpg",
-    "overview": "\"The Hours\" is the story of three women searching for more potent, meaningful lives. Each is alive at a different time and place, all are linked by their yearnings and their fears. Their stories intertwine, and finally come together in a surprising, transcendent moment of shared recognition.",
-    "budget": 25000000,
-    "revenue": 41597830,
-    "genres": ["Drama"],
-    "runtime": 114
-  },
-  {
     "id": 376134,
     "title": "The Discovery",
     "tagline": "",

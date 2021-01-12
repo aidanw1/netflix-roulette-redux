@@ -4,7 +4,8 @@ export const addMovies = (movie) => async (dispatch) => {
   const moviesData = await axios.post(`/movies`, {
     ...movie,
     genres: [movie.genres],
-    release_date: "2016-03-11",
+    release_date: movie.release_date,
+    // release_date: "2016-03-11",
     runtime: +movie.runtime,
     date: undefined,
   });

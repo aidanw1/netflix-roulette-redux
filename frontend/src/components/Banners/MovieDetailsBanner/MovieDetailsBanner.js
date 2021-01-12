@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovieDetails } from "../../../actions/movieDetailsAction";
+import Loader from "../../Loader/Loader";
 // import movies from "../../../Data";
 import {
   MovieDetailsContainer,
@@ -28,11 +29,13 @@ const MovieDetailsBanner = ({ setSwitchBanner, movieDetailsId }) => {
   // });
 
   const { movieDetail } = useSelector((state) => state.detailedMovie);
+  const { movieDetailLoading } = useSelector((state) => state.movies);
 
   console.log(movieDetail);
 
   return (
     <>
+      {/* {movieDetailLoading && <Loader />} */}
       {movieDetail && (
         <MovieDetailsContainer>
           <MovieDetailsImage src={movieDetail.poster_path} />
