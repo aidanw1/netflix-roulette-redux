@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../../Icon/Icon";
 import Search from "../../Search/Search";
 import AddMovie from "../../AddMovie/AddMovie";
 import Modal from "../../Modal/Modal";
 import MovieModal from "../../MovieModal/MovieModal";
 import Loader from "../../Loader/Loader";
+import { addMovies } from "../../../actions/addMoviesAction";
 import {
   SearchTitle,
   SearchBannerContainer,
@@ -14,12 +15,16 @@ import {
 import { blackBackground } from "../../../styles/colors";
 
 const SearchBanner = ({
-  movieModal,
-  addMovieModal,
   closeModal,
-  modalTitle,
-  setMovieModal,
+  // modalTitle,
+  // setMovieModal,
 }) => {
+  const [movieModal, setMovieModal] = useState(false);
+
+  function addMovieModal() {
+    setMovieModal(true);
+  }
+
   return (
     <SearchBannerContainer onClick={closeModal}>
       <AddMovie addMovieModal={addMovieModal} />
@@ -29,7 +34,7 @@ const SearchBanner = ({
       </SearchContent>
 
       <Modal open={movieModal} onClose={() => setMovieModal(false)}>
-        <MovieModal modalTitle={modalTitle} />
+        <MovieModal action={addMovies} modalTitle="Add Movie" />
       </Modal>
     </SearchBannerContainer>
   );

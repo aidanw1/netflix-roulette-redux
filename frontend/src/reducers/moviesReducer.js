@@ -7,6 +7,18 @@ const initState = {
 };
 
 const moviesReducer = (state = initState, action) => {
+  const getUpdatedMovie = () => {
+    const { updatedMovie } = action.payload;
+    console.log(updatedMovie);
+    const oldMovieIndex = state.searchedMovies.findIndex(
+      (movie) => movie.id === updatedMovie.id
+    );
+    console.log(state.searchedMovies[oldMovieIndex]);
+    state.searchedMovies[oldMovieIndex] = updatedMovie;
+    console.log(state.searchedMovies[oldMovieIndex]);
+    return state.searchedMovies;
+  };
+
   switch (action.type) {
     // case "FETCH_MOVIES":
     //   return {
@@ -57,6 +69,12 @@ const moviesReducer = (state = initState, action) => {
           ...[action.payload.addedMovies],
           ...state.searchedMovies,
         ],
+      };
+    case "EDIT_MOVIE":
+      console.info("payload is", action.payload);
+      return {
+        ...state,
+        searchedMovies: getUpdatedMovie(),
       };
     case "SHOW_LOADER":
       return {

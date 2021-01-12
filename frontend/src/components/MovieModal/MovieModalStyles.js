@@ -30,7 +30,7 @@ export const ModalTitle = styled.h2`
 export const ModalInput = styled(Field)`
   color: white;
   width: 100%;
-  padding: 1rem 1rem;
+  padding: 0.5rem 0.5rem;
   background-color: ${greyBackground};
   outline: none;
   border-radius: 5px;
@@ -47,7 +47,7 @@ export const DropDown = styled(Select)`
   border-radius: 5px;
   border: none;
   box-shadow: none;
-  padding: 1rem 1rem;
+  padding: 0.5rem 0.5rem;
   font-size: 2rem;
   cursor: pointer;
 `;
@@ -61,14 +61,14 @@ export const SelectorContainer = styled.div`
 export const IconBox = styled(FaCalendarAlt)`
   color: ${darkRed};
   position: absolute;
-  top: 10px;
+  top: 6px;
   right: 10px;
 `;
 
 export const ArrowBox = styled(TiArrowSortedDown)`
   color: ${darkRed};
   position: absolute;
-  top: 13px;
+  top: 7px;
   right: 10px;
 `;
 
@@ -80,7 +80,7 @@ export const DateSelector = styled(DatePicker)`
   border-radius: 5px;
   border: none;
   box-shadow: none;
-  padding: 1rem 1rem;
+  padding: 0.5rem 0.5rem;
   font-size: 2rem;
   cursor: pointer;
 `;
@@ -92,7 +92,7 @@ export const ErrorText = styled(ErrorMessage)`
 `;
 
 export const SubmitButton = styled(Button)`
-  padding: 10px 15px;
+  padding: 5px 15px;
 `;
 
 export const ResetButton = styled(Button)`
@@ -105,7 +105,7 @@ export const ResetButton = styled(Button)`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 2rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 `;
 
 export const DateContainer = styled(DatePicker)`

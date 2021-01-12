@@ -23,19 +23,20 @@ import {
   ArrowBox,
 } from "./MovieModalStyles";
 
-function MovieModal({ modalTitle }) {
+function MovieModal({ modalTitle, action, movie }) {
   // const [submittedValues, setSubmittedValues] = useState([]);
   const { searchedMovies } = useSelector((state) => state.movies);
 
   const dispatch = useDispatch();
 
   const initialValues = {
-    title: "",
-    release_date: "",
-    poster_path: "",
-    genres: "",
-    overview: "",
-    runtime: "",
+    id: movie ? movie.id : undefined,
+    title: movie ? movie.title : "",
+    release_date: movie ? movie.release_date : "",
+    poster_path: movie ? movie.poster_path : "",
+    genres: movie ? movie.genres : "",
+    overview: movie ? movie.overview : "",
+    runtime: movie ? movie.runtime : "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -50,7 +51,7 @@ function MovieModal({ modalTitle }) {
   const onSubmit = (values, onSubmitProps) => {
     console.log("Form data", values);
     console.log("Submit props", onSubmitProps);
-    dispatch(addMovies(values));
+    dispatch(action(values));
     onSubmitProps.setSubmitting(false); //wait for api response then call this
     onSubmitProps.resetForm();
     // setSubmittedValues(values);

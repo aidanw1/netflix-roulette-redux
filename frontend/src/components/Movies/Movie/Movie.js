@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetails } from "../../../actions/movieDetailsAction";
 import Modal from "../../Modal/Modal";
 import DeleteModal from "../../DeleteModal/DeleteModal";
-
+import MovieModal from "../../MovieModal/MovieModal";
+import { editMovie } from "../../../actions/editMoviesAction";
 import {
   MovieContainer,
   Title,
@@ -23,19 +24,18 @@ import {
   Delete,
 } from "./MovieStyles";
 
-const Movie = ({
-  movie,
-  closeModal,
-  editMovieModal,
-  handleMovieDelete,
-  setSwitchBanner,
-}) => {
+const Movie = ({ movie, closeModal, handleMovieDelete, setSwitchBanner }) => {
   const [showEditBox, setShowEditBox] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   const { searchedMovies } = useSelector((state) => state.movies);
 
   const dispatch = useDispatch();
+
+  function editMovieModal() {
+    setEditModal(true);
+  }
 
   return (
     <>
@@ -82,6 +82,9 @@ const Movie = ({
       </MovieContainer>
       <Modal open={deleteModal} onClose={() => setDeleteModal(false)}>
         <DeleteModal movie={movie} setDeleteModal={setDeleteModal} />
+      </Modal>
+      <Modal open={editModal} onClose={() => setEditModal(false)}>
+        <MovieModal action={editMovie} modalTitle="Edit Movie" movie={movie} />
       </Modal>
     </>
   );
