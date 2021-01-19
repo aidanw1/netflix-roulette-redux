@@ -11,11 +11,11 @@ function LoaderSpinner() {
 }
 
 const LoaderContainer = styled.div`
-  min-width: 90vw;
-  margin: 0 auto;
-  transform: translateX(50%);
-  position: relative;
-  bottom: 70px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  margin-bottom: 20px;
 `;
 
 export default LoaderSpinner;

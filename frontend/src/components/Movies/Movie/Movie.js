@@ -7,6 +7,7 @@ import Modal from "../../Modal/Modal";
 import DeleteModal from "../../DeleteModal/DeleteModal";
 import MovieModal from "../../MovieModal/MovieModal";
 import { editMovie } from "../../../actions/editMoviesAction";
+
 import {
   MovieContainer,
   Title,
@@ -37,6 +38,10 @@ const Movie = ({ movie, closeModal, handleMovieDelete, setSwitchBanner }) => {
     setEditModal(true);
   }
 
+  const handleClick = () => {
+    window[`scrollTo`]({ top: 0, behavior: `auto` });
+  };
+
   return (
     <>
       <MovieContainer>
@@ -50,6 +55,7 @@ const Movie = ({ movie, closeModal, handleMovieDelete, setSwitchBanner }) => {
             onClick={() => {
               dispatch(getMovieDetails(movie.id));
               setSwitchBanner(true);
+              handleClick();
             }}
           />
           <EditIcon onClick={() => setShowEditBox(true)} />
@@ -80,6 +86,7 @@ const Movie = ({ movie, closeModal, handleMovieDelete, setSwitchBanner }) => {
           <Description>{movie.genres[0]}</Description>
         </DescriptionContainer>
       </MovieContainer>
+
       <Modal open={deleteModal} onClose={() => setDeleteModal(false)}>
         <DeleteModal movie={movie} setDeleteModal={setDeleteModal} />
       </Modal>
