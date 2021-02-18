@@ -4,6 +4,8 @@ import Footer from "../components/shared/Footer/Footer";
 import MoviesList from "../components/Movies/MoviesList/MoviesList";
 
 const Home = ({
+  deleteModal,
+  setDeleteModal,
   movieModal,
   addMovieModal = { addMovieModal },
   closeModal,
@@ -11,8 +13,11 @@ const Home = ({
   switchBanner,
   setSwitchBanner,
   movieDetailsId,
+  setMovieDetailsId,
   modalTitle,
   editMovieModal,
+  movieData,
+  handleMovieDelete,
 }) => {
   return (
     <div>
@@ -27,8 +32,14 @@ const Home = ({
         closeModal={closeModal}
       />
       <MoviesList
+        handleMovieDelete={handleMovieDelete}
+        movieData={movieData}
         editMovieModal={editMovieModal}
+        setMovieDetailsId={setMovieDetailsId}
         setSwitchBanner={setSwitchBanner}
+        deleteModal={deleteModal}
+        setDeleteModal={setDeleteModal}
+        closeModal={closeModal}
       />
       <Footer />
     </div>
