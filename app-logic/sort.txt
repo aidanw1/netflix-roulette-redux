@@ -1,0 +1,25 @@
+var movies = [
+    {title: 'The Godfather', rating: 9.2, release: '24 March 1972'},
+    {title: 'The Godfather: Part II', rating: 9.0, release: '20 December 1972'},
+    {title: 'The Shawshank Redemption', rating: 9.3, release: '14 October 1994'},
+];
+Sort by number (rating)
+
+movies.sort(function(a, b) {
+    return a.rating - b.rating;
+});
+Sort by string (title)
+
+movies.sort(function(a, b) {
+    var titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase();
+    if (titleA < titleB) return -1;
+    if (titleA > titleB) return 1;
+    return 0;
+});
+Sort by date (release date)
+
+movies.sort(function(a, b) {
+    var dateA = new Date(a.release), dateB = new Date(b.release);
+    return dateA - dateB;
+});
+Sort by works because JavaScript lets you compare and/or do arithmetic on date objects, which are automatically converted to numeric representations first.
