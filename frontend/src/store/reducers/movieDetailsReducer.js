@@ -8,6 +8,7 @@ const movieDetailsReducer = (state = initialState, action) => {
       return {
         ...state,
         movieDetail: action.payload.movieDetail,
+        movieDetailLoading: false,
       };
     default:
       return { ...state };

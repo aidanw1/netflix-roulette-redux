@@ -29,9 +29,17 @@ const Movie = ({
 }) => {
   const [showEditBox, setShowEditBox] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  
+  const [editModal, setEditModal] = useState(false);
+
   const dispatch = useDispatch();
 
+  function editMovieModal() {
+    setEditModal(true)
+  }
+
+  const handleClick = () => {
+    window[`scrollTo`]({ top: 0, behavior: `auto`})
+  }
 
   return (
     <>
@@ -46,6 +54,7 @@ const Movie = ({
             onClick={() => {
               dispatch(getMovieDetails(movie.id));
               setSwitchBanner(true);
+              handleClick();
             }}
           />
           <EditIcon onClick={() => setShowEditBox(true)} />
@@ -85,9 +94,4 @@ const Movie = ({
 
 export default Movie;
 
-// Movie.propTypes = {
-//   src: PropTypes.string.isRequired,
-//   title: PropTypes.string,
-//   year: PropTypes.string,
-//   genre: PropTypes.string,
-// };
+
