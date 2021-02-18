@@ -20,11 +20,6 @@ const moviesReducer = (state = initState, action) => {
   };
 
   switch (action.type) {
-    // case "FETCH_MOVIES":
-    //   return {
-    //     ...state,
-    //     allMovies: action.payload.allMovies,
-    //   };
     case "INIT_FETCH_MOVIES":
       return {
         ...state,
@@ -86,26 +81,9 @@ const moviesReducer = (state = initState, action) => {
         ...state,
         loading: false,
       };
-    // case "OPEN_DELETE_MODAL":
-    //   return {
-    //     ...state,
-
-    //   }
     case "SORT_BY_RATING":
-      return {
-        ...state,
-        searchedMovies: action.payload.sortedMovies,
-      };
     case "SORT_BY_RUNTIME":
-      return {
-        ...state,
-        searchedMovies: action.payload.sortedMovies,
-      };
     case "SORT_BY_TITLE":
-      return {
-        ...state,
-        searchedMovies: action.payload.sortedMovies,
-      };
     case "SORT_BY_RELEASE_DATE":
       return {
         ...state,
@@ -113,7 +91,7 @@ const moviesReducer = (state = initState, action) => {
       };
 
     default:
-      return { ...state };
+      return state;
   }
 };
 
