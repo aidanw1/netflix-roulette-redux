@@ -4,6 +4,7 @@ import { create } from "yup/lib/Reference"
 export const GlobalStyle = createGlobalStyle`
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,10 +23,6 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   background: #232323;
-}
-
-select {
-  appearance: none;
 }
 
 .MovieStyles__MovieImage-sc-1botavk-8 {
@@ -51,13 +48,14 @@ select {
   visibility: hidden;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  z-index: 10;
 }
 
 .menu.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  z-index: 1;
+  z-index: 10;
 }
 
 .menu ul {
@@ -79,6 +77,28 @@ select {
 
 .react-datepicker-wrapper {
   width: 100%;
+}
+
+select {
+  /* font-size: 16px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+    no-repeat right #ddd;
+  /* background: url(./images/down-arrow.svg) no-repeat right #bada55; */
+  /* -webkit-appearance: none;
+  background-position-x: 244px;  */
+  /* background-image: linear-gradient(45deg, transparent 50%, #f65261 50%),
+    linear-gradient(135deg, #f65261 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  appearance: none; */
+  appearance: none;
 }
 
 .react-datepicker {
@@ -112,5 +132,10 @@ select {
   border-left-color: #ccc;
   right: 1em;
 }
+
+.react-datepicker__time-list-item--disabled {
+  display: none;
+}
+
 
 `
