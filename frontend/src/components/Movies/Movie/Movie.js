@@ -54,7 +54,7 @@ const Movie = ({
             onClick={() => {
               dispatch(getMovieDetails(movie.id));
               setSwitchBanner(true);
-              handleClick();
+              handleClick()
             }}
           />
           <EditIcon onClick={() => setShowEditBox(true)} />

@@ -28,16 +28,7 @@ const Movies = ({
 
   const dispatch = useDispatch();
   //show loader - loading true
-  useEffect(() => {
-    // console.log(searchedMovies);
-    // dispatch(loadMovies());
-    // dispatch(showLoader());
-    // if (searchedMovies.length < 1) {
-    //   dispatch(showLoader());
-    // } else {
-    //   dispatch(hideLoader());
-    // }
-  }, [dispatch, searchedMovies]);
+  useEffect(() => {}, [dispatch, searchedMovies]);
 
   return (
     <MoviesGrid>
