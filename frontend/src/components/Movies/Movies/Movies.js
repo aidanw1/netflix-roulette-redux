@@ -1,24 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadMovies,
-  showLoader,
-  hideLoader,
-} from "../../../actions/moviesAction";
+
 import Movie from "../Movie/Movie";
-import Loader from "../../Loader/Loader";
+import Loader from "../../shared/Loader/Loader";
 import { MoviesGrid } from "./MoviesStyles";
 
-const Movies = ({
-  deleteModal,
-  setDeleteModal,
-  closeModal,
-  setSwitchBanner,
-  setMovieDetailsId,
-  editMovieModal,
-  movieData,
-  handleMovieDelete,
-}) => {
+const Movies = ({ setSwitchBanner, editMovieModal }) => {
   // const displayMovieDetails = (id) => {
   //   setSwitchBanner(true);
   //   setMovieDetailsId(id);
@@ -38,16 +25,7 @@ const Movies = ({
 
   const dispatch = useDispatch();
   //show loader - loading true
-  useEffect(() => {
-    // console.log(searchedMovies);
-    // dispatch(loadMovies());
-    // dispatch(showLoader());
-    // if (searchedMovies.length < 1) {
-    //   dispatch(showLoader());
-    // } else {
-    //   dispatch(hideLoader());
-    // }
-  }, [dispatch, searchedMovies]);
+  useEffect(() => {}, [dispatch, searchedMovies]);
 
   return (
     <MoviesGrid>
@@ -59,13 +37,9 @@ const Movies = ({
           {searchedMovies.map((movie) => (
             <div key={movie.id}>
               <Movie
-                handleMovieDelete={handleMovieDelete}
                 editMovieModal={editMovieModal}
                 setSwitchBanner={setSwitchBanner}
                 movie={movie}
-                deleteModal={deleteModal}
-                setDeleteModal={setDeleteModal}
-                closeModal={closeModal}
               />
             </div>
           ))}

@@ -7,8 +7,8 @@ import {
   DeleteModalQuestion,
 } from "./DeleteModalStyles";
 
-import { deleteMovies } from "../../actions/deleteMoviesAction";
-import { useDispatch, useSelector } from "react-redux";
+import { deleteMovies } from "../../store/actions/deleteMoviesAction";
+import { useDispatch } from "react-redux";
 
 const DeleteModal = ({ movie, setDeleteModal }) => {
   const dispatch = useDispatch();

@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovies } from "../../actions/addMoviesAction";
-import { Link } from "react-router-dom";
-import DateView from "react-datepicker";
 
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -23,19 +20,20 @@ import {
   ArrowBox,
 } from "./MovieModalStyles";
 
-function MovieModal({ modalTitle }) {
+function MovieModal({ modalTitle, action, movie }) {
   // const [submittedValues, setSubmittedValues] = useState([]);
   const { searchedMovies } = useSelector((state) => state.movies);
 
   const dispatch = useDispatch();
 
   const initialValues = {
-    title: "",
-    release_date: "",
-    poster_path: "",
-    genres: "",
-    overview: "",
-    runtime: "",
+    id: movie ? movie.id : undefined,
+    title: movie ? movie.title : "",
+    release_date: movie ? movie.release_date : "",
+    poster_path: movie ? movie.poster_path : "",
+    genres: movie ? movie.genres : "",
+    overview: movie ? movie.overview : "",
+    runtime: movie ? movie.runtime : "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -50,7 +48,7 @@ function MovieModal({ modalTitle }) {
   const onSubmit = (values, onSubmitProps) => {
     console.log("Form data", values);
     console.log("Submit props", onSubmitProps);
-    dispatch(addMovies(values));
+    dispatch(action(values));
     onSubmitProps.setSubmitting(false); //wait for api response then call this
     onSubmitProps.resetForm();
     // setSubmittedValues(values);
@@ -71,7 +69,11 @@ function MovieModal({ modalTitle }) {
   ];
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
       {(formik) => {
         return (
           <ModalContainer>
@@ -85,13 +87,13 @@ function MovieModal({ modalTitle }) {
             <SelectorContainer>
               <DateSelector
                 control="release_date"
-                name="date"
+                name="release_date"
                 placeholderText="Select Date"
               />
               <IconBox size={20} />
             </SelectorContainer>
 
-            <ErrorText name="date" component="div" />
+            <ErrorText name="release_date" component="div" />
             {/* Movie URL */}
             <ModalTitle>Movie Url</ModalTitle>
             <ModalInput name="poster_path" type="text" />
@@ -107,7 +109,7 @@ function MovieModal({ modalTitle }) {
               <ArrowBox size={20} />
             </SelectorContainer>
 
-            <ErrorText name="genre" component="div" />
+            <ErrorText name="genres" component="div" />
             {/* Overview */}
             <ModalTitle>Overview</ModalTitle>
             <ModalInput name="overview" type="text" />

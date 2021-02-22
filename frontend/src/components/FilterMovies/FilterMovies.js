@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSorted } from "../../actions/moviesAction";
-import Dropdown from "../Dropdown/Dropdown";
+import { fetchSorted } from "../../store/actions/moviesAction";
+import Dropdown from "../shared/Dropdown/Dropdown";
 import {
   MoviesFound,
   FilterMoviesContainer,
@@ -9,9 +9,6 @@ import {
   SortBy,
   SortByTitle,
   SortContainer,
-  ReleaseTitle,
-  ReleaseDateContainer,
-  DownIcon,
 } from "./FilterMoviesStyles";
 
 const FilterMovies = () => {
@@ -31,15 +28,21 @@ const FilterMovies = () => {
 
   const dispatch = useDispatch();
 
-  function toggleActive(index) {
-    setTabState({ ...tabState, activeObject: tabState.objects[index] });
-  }
+  const toggleActive = useCallback(
+    (index) => {
+      setTabState({ ...tabState, activeObject: tabState.objects[index] });
+    },
+    [tabState]
+  );
 
-  function toggleActiveStyles(index) {
-    if (tabState.objects[index] === tabState.activeObject) {
-      return "active_genre";
-    }
-  }
+  const toggleActiveStyles = useCallback(
+    (index) => {
+      if (tabState.objects[index] === tabState.activeObject) {
+        return "active_genre";
+      }
+    },
+    [tabState]
+  );
 
   return (
     <>
@@ -59,41 +62,11 @@ const FilterMovies = () => {
                   {element.title}
                 </div>
               ))}
-              {/* <div
-                onClick={() => {
-                  dispatch(fetchSorted(AllGenre));
-                }}
-              >
-                All
-              </div>
-              <div
-                onClick={() => {
-                  dispatch(fetchSorted(DramaGenre));
-                }}
-              >
-                Drama
-              </div>
-              <div onClick={() => dispatch(fetchSorted(AdventureGenre))}>
-                Adventure
-              </div>
-              <div onClick={() => dispatch(fetchSorted(ActionGenre))}>
-                Action
-              </div>
-              <div onClick={() => dispatch(fetchSorted(FamilyGenre))}>
-                Family
-              </div>
-              <div onClick={() => dispatch(fetchSorted(FantasyGenre))}>
-                Fantasy
-              </div> */}
             </>
           </Categories>
           <SortBy>
             <SortByTitle>Sort By</SortByTitle>
             <Dropdown />
-            {/* <ReleaseDateContainer>
-              <ReleaseTitle>Release Date</ReleaseTitle>
-              <DownIcon size={15} />
-            </ReleaseDateContainer> */}
           </SortBy>
         </SortContainer>
 

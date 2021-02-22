@@ -1,17 +1,14 @@
 import React from "react";
-import Icon from "../../Icon/Icon";
 import Search from "../../Search/Search";
 import AddMovie from "../../AddMovie/AddMovie";
-import Modal from "../../Modal/Modal";
+import Modal from "../../shared/Modal/Modal";
 import MovieModal from "../../MovieModal/MovieModal";
-import Loader from "../../Loader/Loader";
+
 import {
   SearchTitle,
   SearchBannerContainer,
-  Content,
   SearchContent,
 } from "./SearchBannerStyles";
-import { blackBackground } from "../../../styles/colors";
 
 const SearchBanner = ({
   movieModal,

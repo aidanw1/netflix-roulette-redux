@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../styles/button-styles";
 import { SearchContainer } from "./SearchStyles";
-import { fetchSearch } from "../../actions/moviesAction";
+import { fetchSearch } from "../../store/actions/moviesAction";
 import { useDispatch } from "react-redux";
 
 const Search = () => {

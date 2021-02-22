@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadMovieDetails } from "../../../actions/movieDetailsAction";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 // import movies from "../../../Data";
 import {
   MovieDetailsContainer,
