@@ -1,8 +1,10 @@
+import { DELETE_MOVIE } from "./constants";
+
 export const deleteMovies = (id) => async (dispatch) => {
   console.log(id);
   dispatch({
-    type: "DELETE_MOVIE",
-    payload: { id },
+    type: DELETE_MOVIE,
+    payload: id,
   });
 };
 

@@ -34,7 +34,7 @@ const moviesReducer = (state = initState, action) => {
     case "FETCH_SEARCHED_MOVIES":
       return {
         ...state,
-        searchedMovies: action.payload.searchedMovies,
+        searchedMovies: action.payload,
         loading: false,
       };
     case "CLEAR_SEARCHED":
@@ -46,24 +46,21 @@ const moviesReducer = (state = initState, action) => {
     case "FETCH_SORTED_MOVIES":
       return {
         ...state,
-        searchedMovies: action.payload.sortedMovies,
+        searchedMovies: action.payload,
         loading: false,
       };
     case "DELETE_MOVIE":
       return {
         ...state,
         searchedMovies: state.searchedMovies.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item.id !== action.payload
         ),
       };
     case "ADD_MOVIE":
       console.info("payload is", action.payload);
       return {
         ...state,
-        searchedMovies: [
-          ...[action.payload.addedMovies],
-          ...state.searchedMovies,
-        ],
+        searchedMovies: [...[action.payload], ...state.searchedMovies],
       };
     case "EDIT_MOVIE":
       console.info("payload is", action.payload);
@@ -87,7 +84,7 @@ const moviesReducer = (state = initState, action) => {
     case "SORT_BY_RELEASE_DATE":
       return {
         ...state,
-        searchedMovies: action.payload.sortedMovies,
+        searchedMovies: action.payload,
       };
 
     default:

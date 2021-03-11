@@ -1,4 +1,5 @@
 import axios from "../../helpers/axiosHelper";
+import { EDIT_MOVIE } from "./constants";
 
 export const editMovie = (movie) => async (dispatch) => {
   const updatedMovie = {
@@ -15,9 +16,7 @@ export const editMovie = (movie) => async (dispatch) => {
   const moviesData = await axios.put(`/movies`, updatedMovie);
 
   dispatch({
-    type: "EDIT_MOVIE",
-    payload: {
-      updatedMovie,
-    },
+    type: EDIT_MOVIE,
+    payload: updatedMovie,
   });
 };

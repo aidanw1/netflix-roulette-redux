@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../styles/button-styles";
+import { Button } from "../shared/button-styles";
 import { ModalHeader, ButtonContainer } from "../MovieModal/MovieModalStyles";
 
 export const DeleteHeader = styled(ModalHeader)``;

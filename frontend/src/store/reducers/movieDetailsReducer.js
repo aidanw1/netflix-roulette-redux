@@ -7,7 +7,7 @@ const movieDetailsReducer = (state = initialState, action) => {
     case "GET_MOVIE_DETAILS":
       return {
         ...state,
-        movieDetail: action.payload.movieDetail,
+        movieDetail: action.payload,
         movieDetailLoading: false,
       };
     default:

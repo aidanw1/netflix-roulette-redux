@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "../Icon/Icon";
-import SearchBanner from "../../Banners/SearchBanner/SearchBanner";
-import MovieDetailsBanner from "../../Banners/MovieDetailsBanner/MovieDetailsBanner";
+import Icon from "../Icon";
+import SearchBanner from "../../Banners/SearchBanner";
+import MovieDetailsBanner from "../../Banners/MovieDetailsBanner";
 import {
   BannerContainerSearch,
   BannerContainerMovieDetails,

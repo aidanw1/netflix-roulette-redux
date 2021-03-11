@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../styles/button-styles";
+import { Button } from "../shared/button-styles";
 import { darkRed, greyBackground, blackBackground } from "../../styles/colors";
 import { Field, Form, ErrorMessage } from "formik";
 import Select from "../shared/Select";

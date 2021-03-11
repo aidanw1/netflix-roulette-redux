@@ -1,9 +1,9 @@
 import React from "react";
 import { IconContainer, IconBold, IconSub } from "./IconStyles";
 
-const Icon = ({ setSwitchBanner = { setSwitchBanner } }) => {
+const Icon = () => {
   return (
-    <IconContainer onClick={() => setSwitchBanner(false)}>
+    <IconContainer>
       <IconBold>netlix</IconBold>
       <IconSub>roulette</IconSub>
     </IconContainer>

@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "start": "node serve.js"
+    "start": "node serve.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^5.0.1",
+    "eslint": "^7.21.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.1",
     "http-proxy-middleware": "^1.0.6",

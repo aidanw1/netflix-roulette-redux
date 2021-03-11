@@ -14,7 +14,7 @@ import {
   Menu,
 } from "./DropdownStyles";
 
-function Dropdown({ title, items, multiSelect = false }) {
+function Dropdown() {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   //SORT BY

@@ -1,4 +1,5 @@
 import axios from "../../helpers/axiosHelper";
+import { ADD_MOVIE } from "./constants";
 
 export const addMovies = (movie) => async (dispatch) => {
   const moviesData = await axios.post(`/movies`, {
@@ -11,9 +12,7 @@ export const addMovies = (movie) => async (dispatch) => {
   });
 
   dispatch({
-    type: "ADD_MOVIE",
-    payload: {
-      addedMovies: moviesData.data,
-    },
+    type: ADD_MOVIE,
+    payload: moviesData.data,
   });
 };

@@ -1,14 +1,24 @@
 import axios from "../../helpers/axiosHelper";
+import {
+  FETCH_MOVIES,
+  INIT_MOVIE_DETAILS,
+  FETCH_SEARCHED_MOVIES,
+  FETCH_SORTED_MOVIES,
+  INIT_FETCH_MOVIES,
+  SORT_BY_TITLE,
+  SORT_BY_RATING,
+  SORT_BY_RELEASE_DATE,
+  SHOW_LOADER,
+  HIDE_LOADER,
+} from "./constants";
 
 export const loadMovies = () => async (dispatch) => {
   //FETCH AXIOS
   const allMoviesData = await axios.get("/movies?limit=12");
 
   dispatch({
-    type: "FETCH_MOVIES",
-    payload: {
-      allMovies: allMoviesData.data.data,
-    },
+    type: FETCH_MOVIES,
+    payload: allMoviesData.data.data,
   });
 
   // dispatch({
@@ -21,7 +31,7 @@ export const loadMovies = () => async (dispatch) => {
 
 export const fetchSearch = (movie_name) => async (dispatch) => {
   dispatch({
-    type: "INIT_FETCH_MOVIES",
+    type: INIT_MOVIE_DETAILS,
   });
   const searchMovieData = await axios.get(
     `/movies?search=${movie_name}&searchBy=title`
@@ -30,16 +40,14 @@ export const fetchSearch = (movie_name) => async (dispatch) => {
   // console.log(searchMovieData.data);
 
   dispatch({
-    type: "FETCH_SEARCHED_MOVIES",
-    payload: {
-      searchedMovies: searchMovieData.data.data,
-    },
+    type: FETCH_SEARCHED_MOVIES,
+    payload: searchMovieData.data.data,
   });
 };
 
 export const fetchSorted = (movie_genre) => async (dispatch) => {
   dispatch({
-    type: "INIT_FETCH_MOVIES",
+    type: INIT_FETCH_MOVIES,
   });
   const sortedMoviesData = await axios.get(
     `/movies?limit=100&searchBy=genres&filter=${movie_genre}`
@@ -48,10 +56,8 @@ export const fetchSorted = (movie_genre) => async (dispatch) => {
   // console.log(sortedMoviesData);
 
   dispatch({
-    type: "FETCH_SORTED_MOVIES",
-    payload: {
-      sortedMovies: sortedMoviesData.data.data,
-    },
+    type: FETCH_SORTED_MOVIES,
+    payload: sortedMoviesData.data.data,
   });
 };
 
@@ -66,10 +72,8 @@ export const sortByTitle = (movies) => async (dispatch) => {
   });
 
   dispatch({
-    type: "SORT_BY_TITLE",
-    payload: {
-      sortedMovies: sortedMoviesData,
-    },
+    type: SORT_BY_TITLE,
+    payload: sortedMoviesData,
   });
 };
 
@@ -80,10 +84,8 @@ export const sortByRuntime = (movies) => async (dispatch) => {
   });
 
   dispatch({
-    type: "SORT_BY_TITLE",
-    payload: {
-      sortedMovies: sortedMoviesData,
-    },
+    type: SORT_BY_TITLE,
+    payload: sortedMoviesData,
   });
 };
 
@@ -94,10 +96,8 @@ export const sortByRating = (movies) => async (dispatch) => {
   });
 
   dispatch({
-    type: "SORT_BY_RATING",
-    payload: {
-      sortedMovies: sortedMoviesData,
-    },
+    type: SORT_BY_RATING,
+    payload: sortedMoviesData,
   });
 };
 
@@ -109,21 +109,19 @@ export const sortByReleaseDate = (movies) => async (dispatch) => {
   });
 
   dispatch({
-    type: "SORT_BY_RELEASE_DATE",
-    payload: {
-      sortedMovies: sortedMoviesData,
-    },
+    type: SORT_BY_RELEASE_DATE,
+    payload: sortedMoviesData,
   });
 };
 
 export const showLoader = () => async (dispatch) => {
   dispatch({
-    type: "SHOW_LOADER",
+    type: SHOW_LOADER,
   });
 };
 
 export const hideLoader = () => async (dispatch) => {
   dispatch({
-    type: "HIDE_LOADER",
+    type: HIDE_LOADER,
   });
 };
