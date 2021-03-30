@@ -1,3 +1,23 @@
+import {
+  INIT_FETCH_MOVIES,
+  INIT_MOVIE_DETAILS,
+  FETCH_SEARCHED_MOVIES,
+  CLEAR_SEARCHED,
+  FETCH_SORTED_MOVIES,
+  DELETE_MOVIE,
+  ADD_MOVIE,
+  EDIT_MOVIE,
+} from "../constants/movieConstants";
+
+import {
+  SORT_BY_RATING,
+  SORT_BY_RUNTIME,
+  SORT_BY_TITLE,
+  SORT_BY_RELEASE_DATE,
+} from "../constants/sortConstants";
+
+import { SHOW_LOADER, HIDE_LOADER } from "../constants/loaderConstants";
+
 const initState = {
   allMovies: [],
   searchedMovies: [],
@@ -20,68 +40,68 @@ const moviesReducer = (state = initState, action) => {
   };
 
   switch (action.type) {
-    case "INIT_FETCH_MOVIES":
+    case INIT_FETCH_MOVIES:
       return {
         ...state,
         loading: true,
       };
 
-    case "INIT_MOVIE_DETAILS":
+    case INIT_MOVIE_DETAILS:
       return {
         ...state,
         movieDetailLoading: true,
       };
-    case "FETCH_SEARCHED_MOVIES":
+    case FETCH_SEARCHED_MOVIES:
       return {
         ...state,
         searchedMovies: action.payload,
         loading: false,
       };
-    case "CLEAR_SEARCHED":
+    case CLEAR_SEARCHED:
       return {
         ...state,
         searchedMovies: [],
         loading: false,
       };
-    case "FETCH_SORTED_MOVIES":
+    case FETCH_SORTED_MOVIES:
       return {
         ...state,
         searchedMovies: action.payload,
         loading: false,
       };
-    case "DELETE_MOVIE":
+    case DELETE_MOVIE:
       return {
         ...state,
         searchedMovies: state.searchedMovies.filter(
           (item) => item.id !== action.payload
         ),
       };
-    case "ADD_MOVIE":
+    case ADD_MOVIE:
       console.info("payload is", action.payload);
       return {
         ...state,
         searchedMovies: [...[action.payload], ...state.searchedMovies],
       };
-    case "EDIT_MOVIE":
+    case EDIT_MOVIE:
       console.info("payload is", action.payload);
       return {
         ...state,
         searchedMovies: getUpdatedMovie(),
       };
-    case "SHOW_LOADER":
+    case SHOW_LOADER:
       return {
         ...state,
         loading: true,
       };
-    case "HIDE_LOADER":
+    case HIDE_LOADER:
       return {
         ...state,
         loading: false,
       };
-    case "SORT_BY_RATING":
-    case "SORT_BY_RUNTIME":
-    case "SORT_BY_TITLE":
-    case "SORT_BY_RELEASE_DATE":
+    case SORT_BY_RATING:
+    case SORT_BY_RUNTIME:
+    case SORT_BY_TITLE:
+    case SORT_BY_RELEASE_DATE:
       return {
         ...state,
         searchedMovies: action.payload,

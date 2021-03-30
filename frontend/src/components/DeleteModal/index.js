@@ -6,12 +6,18 @@ import {
   ConfirmContainer,
   DeleteModalQuestion,
 } from "./DeleteModalStyles";
+import { deleteMovie } from "../../store/thunks/thunks";
 
 import { deleteMovies } from "../../store/actions/deleteMoviesAction";
 import { useDispatch } from "react-redux";
+import { connect } from "formik";
 
 const DeleteModal = ({ movie, setDeleteModal }) => {
   const dispatch = useDispatch();
+
+  const deleteItem = () => {
+    deleteMovie(movie.id);
+  };
 
   return (
     <DeleteModalContainer>
@@ -25,7 +31,8 @@ const DeleteModal = ({ movie, setDeleteModal }) => {
           primary
           onClick={() => {
             setDeleteModal(false);
-            dispatch(deleteMovies(movie.id));
+            deleteItem();
+            // dispatch(deleteMovies(movie.id));
           }}
         >
           CONFIRM

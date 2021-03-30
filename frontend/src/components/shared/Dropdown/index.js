@@ -11,7 +11,6 @@ import {
   DownIcon,
   MenuContainer,
   MenuTrigger,
-  Menu,
 } from "./DropdownStyles";
 
 function Dropdown() {
@@ -48,6 +47,19 @@ function Dropdown() {
     };
   }, [isActive]);
 
+  const links = [
+    { label: "Release Date", sortFn: sortByReleaseDate },
+    { label: "Rating", sortFn: sortByRating },
+    { label: "Run Time", sortFn: sortByRuntime },
+    { label: "Title", sortFn: sortByTitle },
+  ];
+
+  const linkClicked = (link) => {
+    setSortTitle(link.label);
+    setIsActive(false);
+    dispatch(link.sortFn(searchedMovies));
+  };
+
   return (
     <MenuContainer>
       <MenuTrigger onClick={onClick}>
@@ -61,42 +73,11 @@ function Dropdown() {
         className={`menu ${isActive ? "active" : "inactive"}`}
       >
         <ul>
-          <li
-            onClick={() => {
-              setSortTitle("Release Date");
-              setIsActive(false);
-              dispatch(sortByReleaseDate(searchedMovies));
-            }}
-          >
-            <a href="#">Release Date</a>
-          </li>
-          <li
-            onClick={() => {
-              setSortTitle("Rating");
-              setIsActive(false);
-              dispatch(sortByRating(searchedMovies));
-            }}
-          >
-            <a href="#">Rating</a>
-          </li>
-          <li
-            onClick={() => {
-              setSortTitle("Run Time");
-              setIsActive(false);
-              dispatch(sortByRuntime(searchedMovies));
-            }}
-          >
-            <a href="#">Run Time</a>
-          </li>
-          <li
-            onClick={() => {
-              setSortTitle("Title");
-              setIsActive(false);
-              dispatch(sortByTitle(searchedMovies));
-            }}
-          >
-            <a href="#">Title</a>
-          </li>
+          {links.map((link) => (
+            <li onClick={() => linkClicked(link)}>
+              <a href="#">{link.label}</a>
+            </li>
+          ))}
         </ul>
       </nav>
     </MenuContainer>

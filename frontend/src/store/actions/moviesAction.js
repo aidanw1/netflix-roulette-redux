@@ -1,16 +1,17 @@
 import axios from "../../helpers/axiosHelper";
+import { SHOW_LOADER, HIDE_LOADER } from "../constants/loaderConstants";
 import {
   FETCH_MOVIES,
   INIT_MOVIE_DETAILS,
   FETCH_SEARCHED_MOVIES,
   FETCH_SORTED_MOVIES,
   INIT_FETCH_MOVIES,
+} from "../constants/movieConstants";
+import {
   SORT_BY_TITLE,
   SORT_BY_RATING,
   SORT_BY_RELEASE_DATE,
-  SHOW_LOADER,
-  HIDE_LOADER,
-} from "./constants";
+} from "../constants/sortConstants";
 
 export const loadMovies = () => async (dispatch) => {
   //FETCH AXIOS

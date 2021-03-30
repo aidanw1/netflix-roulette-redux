@@ -1,5 +1,5 @@
 import axios from "../../helpers/axiosHelper";
-import { INIT_MOVIE_DETAILS, GET_MOVIE_DETAILS } from "./constants";
+import { INIT_MOVIE_DETAILS } from "../constants/movieConstants";
 
 export const getMovieDetails = (id) => async (dispatch) => {
   dispatch({

@@ -1,5 +1,5 @@
 import axios from "../../helpers/axiosHelper";
-import { EDIT_MOVIE } from "./constants";
+import { EDIT_MOVIE } from "../constants/movieConstants";
 
 export const editMovie = (movie) => async (dispatch) => {
   const updatedMovie = {
