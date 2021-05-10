@@ -1,0 +1,4 @@
+export const SORT_BY_RUNTIME = "SORT_BY_RUNTIME";
+export const SORT_BY_TITLE = "SORT_BY_TITLE";
+export const SORT_BY_RELEASE_DATE = "SORT_BY_RELEASE_DATE";
+export const SORT_BY_RATING = "SORT_BY_RATING";

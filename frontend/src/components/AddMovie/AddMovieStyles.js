@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../../styles/button-styles";
+import { Button } from "../shared/button-styles";
 
 export const AddMovieButtonContainer = styled.div`
   position: absolute;

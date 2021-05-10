@@ -2,6 +2,8 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const pathName = path.resolve(__dirname, "./src");
 const entry = path.resolve(__dirname, "./src/index.js");
+const Dotenv = require("dotenv-webpack");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
 console.log("path is", pathName, entry);
 
 module.exports = {
@@ -54,5 +56,9 @@ module.exports = {
       filename: "index.html",
       template: path.resolve(__dirname, "./src/index.html"),
     }),
+    new Dotenv(),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: "src/images", to: "images" }],
+    // }),
   ],
 };

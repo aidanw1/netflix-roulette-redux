@@ -11,4 +11,5 @@ export const MoviesGrid = styled.div`
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   grid-gap: 2rem;
+  padding-bottom: 50px;
 `;

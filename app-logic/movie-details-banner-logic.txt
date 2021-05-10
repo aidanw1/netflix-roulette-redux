@@ -1,0 +1,82 @@
+HOW TO GET THE ID OF AN INDIVIDUAL MOVIE AND DISPLAY IT WHEN USING DUMMY DATA
+
+=== APP === 
+. Creates a state for holding the id - the state id will change every time
+a movie image is clicked.
+. Creates a state for a toggle which is set to true when an image movie is clicked
+to change the top banner.
+. const [switchBannerId, setSwitchBannerId] = useState("")
+. const [switchBanner, setSwitchBanner] = useState(false)
+
+=== MOVIES ===
+. Cretes a function which passes an id argument in to the setSwitchBannerId state
+. sets the switchBanner to true
+const displayMovieDetails = (id) => {
+    setSwitchBanner(true)
+    setSwitchBannerId(id)
+}
+
+. Passes in the movie prop which maps over the items
+. Passes in the displayMovieDetails function
+
+{movies.map((movie) => (
+    <Movie
+        displayMovieDetails={displayMovieDetails}
+        movie={movie}
+    />
+))}
+
+=== MOVIE ===
+. On click of the movie image displayMovieDetails function is passed in movie.id as the id argument
+<MovieImage
+    src={movie.image}
+    alt="movie images"
+    onClick={() => displayMovieDetails(movie.id)}
+/>
+
+=== BANNER ===
+. Passes in switchBannerId
+<MovieDetailsBanner
+    setSwitchBanner={setSwitchBanner}
+    switchBannerId={switchBannerId}
+/>
+
+=== MOVIE DETAILS BANNER ===
+. Creates a state for the individual movie info to live in
+. useEffect - on load of page checks if the movie.id from the data file matche the id of the switchBannerId
+const [singleMovie, setSingleMovie] = useState(null);
+
+useEffect(() => {
+    const newMovie = movies.find((movie) => movie.id === switchBannerId);
+    console.log(newMovie);
+    setSingleMovie(newMovie);
+});
+
+=== DISPLAYING MOVIE DETAILS WORKFLOW
+// STAGE 1 - PASS THE MAPPED OVER MOVIE.ID INTO THE SETMOVIEDETAILSID STATE USING SETMOVIEDETAILS FUNCTION 
+. Create a state in App for storing the id which will match the id of the movie when we click the individual image
+     const [movieDetailsId, setMovieDetailsId] = useState("");
+. Pass setMovieDetailsId into Movies from MoviesList - as we will create a function in the movies list which passes an id argument
+. Pass movieDetailsId into Banner - as the movieDetailsId will be used for logic to check the id
+. Create a function in Movies with an id argument which will later set the id of movieDetailsId state
+    const displayMovieDetails = (id) => {
+    setSwitchBanner(true);
+    setMovieDetailsId(id);
+  };
+. Pass displayMovieDetails in to the individual movie
+. Create an onclick for the movie image which passes the mapped over movie.id into the argument
+onClick={() => displayMovieDetails(movie.id)}
+
+. Now console.log the movieDetailsId - weve now got the id for each movie on click
+
+// STAGE 2 - COMPARE THE MOVIEDETAILSID WEVE CLICKED ON WITH THE ID IN THE DUMMY DATA ONCE THE PAGE RENDERS
+. Create state in movie details banner to store the individual movie data which will change every time the image is clicked
+const [singleMovie, setSingleMovie] = useState(null);
+. Create a useEffect hook - create a variable which will be set to compare the movieDetailsId with the movie id in the dummy data
+  useEffect(() => {
+    const newMovie = movies.find((movie) => movie.id === movieDetailsId);
+    //find returns an object of the single movie that matches the movie of the movieDetailsId
+    console.log(newMovie);
+    //set the singleMovie to the newMovie
+  });
+. Now the single movie has been set to the individual movie we click, we can use the data
